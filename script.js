@@ -1,36 +1,53 @@
-// Pure function - testable
-    const isPalindrome = str => {
-      const cleanStr = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
-      const reversed = [...cleanStr].reverse().join('');
-      return cleanStr === reversed;
-    };
+let character = document.getElementById("symbol");
 
-    // UI Utility
-    const updateResult = (message, className) => {
-      result.textContent = message;
-      result.className = '';
-      result.classList.add(className, 'visible');
-    };
+let totalRowsInput = document.getElementById("count");
+let resultSection = document.getElementById("result");
+let generateButton = document.getElementById("generateBtn");
+let checkBox = document.getElementById("invertToggle");
 
-    // Main handler
-    const checkPalindromeHandler = () => {
-      const input = inputField.value.trim();
-      if (!input) {
-        updateResult('Please input a value', 'error');
-        return;
-      }
-      const isPal = isPalindrome(input);
-      updateResult(`"${input}" is ${isPal ? '' : 'not '}a palindrome`, isPal ? 'palindrome' : 'not-palindrome');
-      inputField.value = '';
-    };
+generateButton.addEventListener('click', generatePyramid);
+checkBox.addEventListener('change', generatePyramid);
 
-    // DOM Setup
-    const inputField = document.getElementById('text-input');
-    const checkButton = document.getElementById('check-btn');
-    const result = document.getElementById('result');
 
-    checkButton.addEventListener('click', checkPalindromeHandler);
-    inputField.addEventListener('keydown', e => {
-      if (e.key === 'Enter') checkPalindromeHandler();
-    });
+function generatePyramid() {
+
+  let totalRows = parseInt(totalRowsInput.value);
+let symbol = character.value;
+  if (totalRows > 12 || totalRows < 3 || isNaN(totalRows)) {
+    resultSection.innerText = "Rows must be between 3 and 12";
  
+  }
+else if(symbol.trim() == ''){
+     resultSection.innerText = "Please add symbol";
+}
+  else {
+    const rows = [];
+    let isChecked = checkBox.checked;
+    for (let i = 1; i <= totalRows; i++) {
+      if (isChecked) {
+        rows.unshift(padRow(i, totalRows));
+      }
+      else {
+        rows.push(padRow(i, totalRows));
+      }
+    }
+
+    let output = "";
+    for (const row of rows) {
+      output = output + "\n" + row;
+    }
+    resultSection.innerText = output;
+
+  }
+  function padRow(rowNumber, rowCount) {
+    let symbol = character.value;
+    return " ".repeat(rowCount - rowNumber) + symbol.repeat(2 * rowNumber - 1) + " ".repeat(rowCount - rowNumber);
+  }
+}
+
+
+
+character.addEventListener('keydown', e => {
+  if (e.key === 'Enter') generatePyramid();
+});
+
