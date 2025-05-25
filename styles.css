@@ -1,129 +1,89 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
-  margin: 0;
-  padding: 20px;
-}
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0a0220;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
 
-.container {
-  max-width: 500px;
-  background-color: white;
-  padding: 30px;
-  margin: 0 auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
+    h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 40px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    }
 
-h1 {
-  text-align: center;
-  margin-bottom: 24px;
-  color: #333;
-}
+    .card {
+      background: #ffffff;
+      color: #000;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      text-align: center;
+      min-width: 350px;
+    }
 
-.form-group {
-  margin-bottom: 20px;
-}
+    label {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
 
-label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-}
+    input[type="text"] {
+      border: none;
+      border-bottom: 2px solid #ff4107;
+      padding: 10px;
+      font-size: 16px;
+      color: #333;
+      background-color: transparent;
+      outline: none;
+    }
 
-input[type="number"],
-input[type="text"] {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-sizing: border-box;
-}
+    button {
+      margin-left: 10px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: bold;
+      background-color: #ff4107;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-button {
-  width: 100%;
-  padding: 12px;
-  background-color: #007bff;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+    button:hover {
+      background-color: #5e0091;
+    }
 
-button:hover {
-  background-color: #0056b3;
-}
-.form-group.row {
-  display: flex;
-  align-items: center;
-    justify-content: space-between; /* Space between label and switch */
-}
+    #result {
+      margin-top: 30px;
+      font-size: 20px;
+      font-weight: 500;
+      padding: 14px 24px;
+      border-radius: 10px;
+      transform: translateY(10px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
 
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 40px;  /* Thinner width */
-  height: 20px; /* Thinner height */
-}
-.switch input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
+    .visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 16px;
-  width: 16px;
-  left: 2px;
-  bottom: 2px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
+    .palindrome {
+      background-color: #1e4620;
+      color: #fff;
+      border: 1px solid #388e3c;
+    }
 
-input:checked + .slider {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(20px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-
-.pyramid-output {
-  margin: 5px 0px 10px;
-font-weight: bold;
-  white-space: pre;
-  font-family: monospace;
-  text-align: center;
-  color: #222;
-}
+    .not-palindrome {
+      background-color: #4a1c1c;
+      color: #ffffff;
+      border: 1px solid #d32f2f;
+    }
